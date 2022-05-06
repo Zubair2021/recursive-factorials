@@ -20,6 +20,10 @@ def get_factorial_recur(n):
 
 # Creating a class containing important attributes
 
+"""
+   A class will be created with four features: ID, Date, Pehnotype and Sequence
+"""
+
 class Rec:
      def __init__(self, ID, Date, Phenotype, Sequence):
 
@@ -31,9 +35,23 @@ class Rec:
 
 # Creating an empty dictionary
 
+"""
+The empty dictionary will contain four keys
+"""
+
 record_dict = {"ID":[],"Date":[], "Phenotype":[], "Sequence":[]};
 
 # Creating a for loop to parse information from fasta file and append to dictionary
+
+"""
+   Function main will be created
+   File name should be provided in the command line and the one used here is mentioned in the if __name__ == __main__ function
+   in stream will open the file in read mode
+   outstream will write the results according to the argument given in the command line
+   Module SeqIO will create record from fasta file
+"""
+
+
 def main():
 
   print('Opening' + fasta)
@@ -58,6 +76,7 @@ def main():
             print(record_dict)
           print("Ending with of outstream")
 
+          #Finding the number of occurences of orange
           k = 0
           for i in record_dict['Phenotype']:
               if i == 'Orange':
@@ -67,11 +86,12 @@ def main():
           p = float(sys.argv[2])
           print(type(p))
           q = 1-p
-		##  Using the formula
           n = len([1 for line in open(sys.argv[1]) if line.startswith(">")])
 
+          # Creating formula using the function described above
           bern_formula = (get_factorial_recur(n)/(get_factorial_recur(n-k)*get_factorial_recur(k)))*((p**k)*(q**(n-k)))
 
+          # Writing into the output file
           out_stream.write("Results\n\np (the frequency of \"orange\" in the population) = " + str(p))
           out_stream.write("\nn (the number of sampled individuals) = " + str(n))
           out_stream.write("\nk (the number of \"orange\" individuals in the sample set) = " + str(k))
